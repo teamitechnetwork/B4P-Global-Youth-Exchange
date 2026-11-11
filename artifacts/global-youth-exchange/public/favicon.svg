@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="16" fill="#172236"/>
+  <circle cx="32" cy="32" r="23" fill="#f08c4d"/>
+  <circle cx="32" cy="32" r="18" fill="#fffaf0"/>
+  <text x="32" y="29" fill="#078fb2" font-family="Arial,sans-serif" font-size="9" font-weight="700" text-anchor="middle">B4P</text>
+  <path d="M21 39c2.2-5.6 5.9-8.4 11-8.4S40.8 33.4 43 39" fill="none" stroke="#078fb2" stroke-linecap="round" stroke-width="2.4"/>
+  <circle cx="32" cy="35" r="2.4" fill="#f08c4d"/>
+</svg>

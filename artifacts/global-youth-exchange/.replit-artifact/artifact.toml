@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Global Youth Exchange & Volunteers"
+description = "A welcoming multi-page website for B4P CODEFOUND’s Global Youth Exchange and Volunteers Program, helping young people explore leadership development, cultural exchange, mentorship, and community action."
+version = "1.0.0"
+id = "artifacts/global-youth-exchange"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19593
+
+[services.development]
+run = "pnpm --filter @workspace/global-youth-exchange run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/global-youth-exchange", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/global-youth-exchange/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19593"
+BASE_PATH = "/"

@@ -1,45 +1,54 @@
-# [Project name]
+# B4P CODEFOUND Global Youth Exchange & Volunteers
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A responsive information website for the Global Youth Exchange and Volunteers (GYEV) youth leadership initiative.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- `pnpm install` — install workspace dependencies
+- `pnpm dev:gyve` — run the website at `http://localhost:5173`
+- `pnpm --filter @workspace/global-youth-exchange run typecheck` — check the website's TypeScript
+- `BASE_PATH=/ PORT=3000 pnpm --filter @workspace/global-youth-exchange run build` — build the static site
+- `pnpm run typecheck` — check all workspace packages
+- Vercel deployment settings are provided in `vercel.json`
+
+The website does not require a database, API service, or secret environment variables. The shared API and database packages in this workspace are not used by the site.
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- pnpm workspace, Node.js, TypeScript
+- Website: React, Vite, Wouter, Tailwind CSS
+- Static deployment: Vercel
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/global-youth-exchange/src/` — website routes, components, and styles
+- `artifacts/global-youth-exchange/public/images/` — supplied program logo and youth photos
+- `artifacts/global-youth-exchange/index.html` — site shell and default sharing metadata
+- `vercel.json` — Vercel install, build, output, and SPA route configuration
+- `README.md` — VS Code, Git, local development, and Vercel setup
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The program website is static; it does not collect or submit personal information.
+- The Get involved page describes participation pathways without inventing application or contact details.
+- Browser-history routes use a shared navigation shell and a Vercel rewrite for direct page visits.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+The site introduces GYEV, explains its vision and program structure, describes intended outcomes, and provides guidance for youth, mentors, and community partners. The program is planned to launch in December 2026.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Build a multi-page website with a clean user interface and experience.
+- Keep the project ready for Git, Vercel, and VS Code.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Vite defaults to port `5173` and base path `/` for local development; Replit supplies its own values through the managed workflow.
+- Set `BASE_PATH=/` for root-domain Vercel builds; `vercel.json` already does this.
+- Update `index.html` and `Metadata` in `src/App.tsx` if the public organization name, launch date, or site description changes.
 
 ## Pointers
 
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- See `README.md` for setup instructions.
+- See the `pnpm-workspace` skill for workspace conventions.
