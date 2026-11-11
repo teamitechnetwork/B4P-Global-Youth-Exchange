@@ -16,6 +16,14 @@ import {
   X,
 } from 'lucide-react';
 import {
+  FaApple,
+  FaFacebookF,
+  FaGooglePlay,
+  FaInstagram,
+  FaLinkedinIn,
+} from 'react-icons/fa6';
+import { APP_STORE_LINKS, SOCIAL_LINKS } from '@/lib/site-links';
+import {
   Link,
   Route,
   Switch,
@@ -25,6 +33,12 @@ import {
 
 const queryClient = new QueryClient();
 
+const socialChannels = [
+  { label: 'Facebook', href: SOCIAL_LINKS.facebook, Icon: FaFacebookF },
+  { label: 'Instagram', href: SOCIAL_LINKS.instagram, Icon: FaInstagram },
+  { label: 'LinkedIn', href: SOCIAL_LINKS.linkedin, Icon: FaLinkedinIn },
+];
+
 const pages = [
   { path: '/', label: 'Home' },
   { path: '/about', label: 'About' },
@@ -32,6 +46,78 @@ const pages = [
   { path: '/impact', label: 'Our vision for impact' },
   { path: '/get-involved', label: 'Get involved' },
 ];
+
+function AppStoreBadge({
+  store,
+  href,
+}: {
+  store: 'Google Play' | 'App Store';
+  href: string;
+}) {
+  const Icon = store === 'Google Play' ? FaGooglePlay : FaApple;
+  const storeId = store === 'Google Play' ? 'google-play' : 'app-store';
+  const content = (
+    <>
+      <Icon aria-hidden="true" />
+      <span>
+        <small>DOWNLOAD ON</small>
+        <strong>{store}</strong>
+      </span>
+    </>
+  );
+
+  if (!href) {
+    return (
+      <span
+        className="store-badge store-badge-pending"
+        aria-disabled="true"
+        title="Add the official listing URL in src/lib/site-links.ts"
+        data-testid={`store-badge-${storeId}`}
+      >
+        {content}
+      </span>
+    );
+  }
+
+  return (
+    <a
+      className="store-badge"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Download B4P Connect on ${store}`}
+      data-testid={`link-store-${storeId}`}
+    >
+      {content}
+    </a>
+  );
+}
+
+function AppDownload() {
+  return (
+    <section className="section app-download-section">
+      <div className="container">
+        <div className="app-download-inner">
+          <div className="app-download-copy">
+            <div className="app-download-mark" aria-hidden="true">B4P</div>
+            <div>
+              <div className="eyebrow">B4P CONNECT</div>
+              <h2>Download our B4P Connect app.</h2>
+              <p>Find B4P Connect on your preferred app store.</p>
+            </div>
+          </div>
+          <div className="app-download-actions">
+            <div className="store-badges">
+              <AppStoreBadge store="Google Play" href={APP_STORE_LINKS.googlePlay} />
+              <AppStoreBadge store="App Store" href={APP_STORE_LINKS.appStore} />
+            </div>
+            <p className="app-download-note">Official store links can be added before publishing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 const metadata: Record<string, { title: string; description: string }> = {
   '/': {
@@ -128,6 +214,20 @@ function Footer() {
               <img className="footer-logo" src="/images/b4p-youth-logo-white.png" alt="B4P CODEFOUND Youth" />
             </Link>
             <p>Young people, connected across cultures and equipped to shape what comes next.</p>
+            <div className="social-links" aria-label="Follow B4P CODEFOUND">
+              {socialChannels.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`B4P CODEFOUND on ${label}`}
+                  data-testid={`link-social-${label.toLowerCase()}`}
+                >
+                  <Icon aria-hidden="true" />
+                </a>
+              ))}
+            </div>
           </div>
           <div>
             <h3>Explore GYEV</h3>
@@ -242,6 +342,7 @@ function Home() {
             </div>
           </div>
         </section>
+        <AppDownload />
       </div>
     </Shell>
   );

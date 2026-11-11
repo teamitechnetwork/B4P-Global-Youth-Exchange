@@ -47,3 +47,10 @@ information only; it does not collect or submit applications.
 
 Program details are based on the supplied concept note. The program is planned
 to launch in December 2026.
+
+## Social and app links
+
+The footer social profiles and app-store destinations are centralized in
+`artifacts/global-youth-exchange/src/lib/site-links.ts`. Replace the empty
+Google Play and App Store values with the official B4P Connect listing URLs;
+the store badges will then become working links.

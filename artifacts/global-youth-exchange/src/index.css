@@ -574,7 +574,7 @@ body { margin: 0; }
    image-led heroes on every page. */
 body,
 .site-wrap,
-.section,
+.section:not(.section-dark),
 .section-soft,
 .content-section,
 .hero,
@@ -878,5 +878,202 @@ body,
 
   .focus-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.footer .social-links a {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #667181;
+  border-radius: 50%;
+  color: #fff;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.footer .social-links a svg {
+  width: 16px;
+  height: 16px;
+}
+
+.footer .social-links a:hover {
+  transform: translateY(-2px);
+  border-color: #078bb9;
+  background: #078bb9;
+  color: #fff;
+}
+
+.app-download-section {
+  background: #fff;
+}
+
+.app-download-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 38px;
+  padding: 34px;
+  border: 1px solid #d7e0e6;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 32px rgba(24, 42, 58, 0.07);
+}
+
+.app-download-copy {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.app-download-mark {
+  display: grid;
+  width: 62px;
+  height: 62px;
+  flex: 0 0 62px;
+  place-items: center;
+  border-radius: 16px;
+  background: #078bb9;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.app-download-copy h2 {
+  margin: 10px 0 8px;
+  color: #202a3c;
+  font-family: var(--app-font-serif);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+.app-download-copy p {
+  margin: 0;
+  color: #4d5968;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.app-download-actions {
+  justify-self: end;
+}
+
+.store-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.store-badge {
+  display: inline-flex;
+  min-width: 154px;
+  min-height: 58px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border: 1px solid #151c28;
+  border-radius: 9px;
+  background: #151c28;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+a.store-badge:hover {
+  transform: translateY(-2px);
+  background: #263549;
+}
+
+.store-badge > svg {
+  width: 23px;
+  height: 23px;
+  flex: 0 0 auto;
+}
+
+.store-badge > span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.store-badge small {
+  color: #fff;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  line-height: 1.1;
+}
+
+.store-badge strong {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.store-badge-pending {
+  cursor: default;
+}
+
+.app-download-note {
+  margin: 10px 0 0;
+  color: #536171;
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+@media (max-width: 850px) {
+  .app-download-inner {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 28px;
+  }
+
+  .app-download-actions {
+    justify-self: start;
+  }
+
+  .app-download-note {
+    text-align: left;
+  }
+}
+
+@media (max-width: 700px) {
+  .app-download-inner {
+    padding: 24px 20px;
+  }
+
+  .app-download-copy {
+    gap: 14px;
+  }
+
+  .app-download-mark {
+    width: 52px;
+    height: 52px;
+    flex-basis: 52px;
+    border-radius: 14px;
+  }
+
+  .store-badges {
+    width: 100%;
+  }
+
+  .store-badge {
+    min-width: 0;
+    flex: 1 1 140px;
+    padding: 9px 11px;
   }
 }
