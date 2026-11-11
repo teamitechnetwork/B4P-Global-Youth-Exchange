@@ -247,12 +247,52 @@ function Home() {
   );
 }
 
-function PageIntro({ label, title, body }: { label: string; title: string; body: string }) {
+function PageIntro({
+  label,
+  title,
+  body,
+  image,
+  imageAlt,
+  imageWidth,
+  imageHeight,
+  visualTitle,
+  visualText,
+  actionLabel,
+  actionHref,
+}: {
+  label: string;
+  title: string;
+  body: string;
+  image: string;
+  imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+  visualTitle: string;
+  visualText: string;
+  actionLabel: string;
+  actionHref: string;
+}) {
   return (
     <section className="page-intro">
-      <div className="container page-intro-grid">
-        <div><div className="kicker">{label}</div><h1>{title}</h1></div>
-        <p>{body}</p>
+      <div className="container">
+        <div className="page-intro-grid">
+          <div className="page-intro-copy">
+            <div className="kicker">{label}</div>
+            <h1>{title}</h1>
+            <p>{body}</p>
+            <Link className="button-primary page-intro-action" href={actionHref} data-testid={`link-hero-${actionHref.slice(1) || 'home'}`}>
+              {actionLabel} <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="page-intro-visual">
+            <img src={image} alt={imageAlt} width={imageWidth} height={imageHeight} />
+            <div className="page-intro-visual-card">
+              <span>GLOBAL YOUTH EXCHANGE &amp; VOLUNTEERS</span>
+              <strong>{visualTitle}</strong>
+              <p>{visualText}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -262,7 +302,19 @@ function About() {
   return (
     <Shell>
       <div className="page">
-        <PageIntro label="About B4P CODEFOUND" title="A world where young people are ready to lead." body="The Global Youth Exchange & Volunteers program is a B4P CODEFOUND initiative shaped around a simple belief: young people deserve the skills, networks, and space to influence the futures they will inherit." />
+        <PageIntro
+          label="About B4P CODEFOUND"
+          title="A world where young people are ready to lead."
+          body="The Global Youth Exchange & Volunteers program is a B4P CODEFOUND initiative shaped around a simple belief: young people deserve the skills, networks, and space to influence the futures they will inherit."
+          image="/images/youth-community.jpg"
+          imageAlt="A diverse group of young people sharing a joyful moment together"
+          imageWidth={736}
+          imageHeight={1104}
+          visualTitle="Many experiences. One shared future."
+          visualText="A global community grounded in youth voice and mutual learning."
+          actionLabel="Explore the program"
+          actionHref="/program"
+        />
         <section className="content-section">
           <div className="container content-split">
             <div><div className="kicker">Our vision</div><h2>Preparation, connection, and possibility.</h2></div>
@@ -310,7 +362,19 @@ function Program() {
   return (
     <Shell>
       <div className="page">
-        <PageIntro label="The GYEV program" title="Two ways to learn. One wider community." body="GYEV combines weekly public education and awareness with a deeper capacity-building journey. Both are designed to make learning, exchange, and youth leadership more accessible." />
+        <PageIntro
+          label="The GYEV program"
+          title="Two ways to learn. One wider community."
+          body="GYEV combines weekly public education and awareness with a deeper capacity-building journey. Both are designed to make learning, exchange, and youth leadership more accessible."
+          image="/images/youth-circle.jpg"
+          imageAlt="Young people gathered in a circle, listening and sharing ideas"
+          imageWidth={736}
+          imageHeight={736}
+          visualTitle="Learn together. Grow together."
+          visualText="Weekly learning and a six-month-to-one-year core program."
+          actionLabel="Ways to take part"
+          actionHref="/get-involved"
+        />
         <section className="content-section">
           <div className="container">
             <div className="section-heading">
@@ -365,7 +429,19 @@ function Impact() {
   return (
     <Shell>
       <div className="page">
-        <PageIntro label="Our vision for impact" title="More voice. More connection. More ways to act." body="GYEV is being designed around the change it hopes to support—not a set of results it has not yet achieved. These are intended outcomes and areas of focus for the initiative." />
+        <PageIntro
+          label="Our vision for impact"
+          title="More voice. More connection. More ways to act."
+          body="GYEV is being designed around the change it hopes to support—not a set of results it has not yet achieved. These are intended outcomes and areas of focus for the initiative."
+          image="/images/youth-community.jpg"
+          imageAlt="Young people from different backgrounds smiling together"
+          imageWidth={736}
+          imageHeight={1104}
+          visualTitle="Voice. Opportunity. Action."
+          visualText="The change GYEV hopes to support—built around young people."
+          actionLabel="Explore our approach"
+          actionHref="/about"
+        />
         <section className="content-section">
           <div className="container">
             <div className="section-heading">
@@ -403,7 +479,19 @@ function GetInvolved() {
   return (
     <Shell>
       <div className="page">
-        <PageIntro label="Get involved" title="There is more than one way to belong." body="Whether you are a young person, a mentor, or a community partner, start by learning what GYEV is building. Participation details are not yet available; this page does not open registration." />
+        <PageIntro
+          label="Get involved"
+          title="There is more than one way to belong."
+          body="Whether you are a young person, a mentor, or a community partner, start by learning what GYEV is building. Participation details are not yet available; this page does not open registration."
+          image="/images/youth-circle.jpg"
+          imageAlt="Young people and a mentor sharing a conversation in a circle"
+          imageWidth={736}
+          imageHeight={736}
+          visualTitle="Young people. Mentors. Partners."
+          visualText="Different roles, connected by a shared commitment to youth."
+          actionLabel="Discover the program"
+          actionHref="/program"
+        />
         <section className="content-section">
           <div className="container">
             <div className="section-heading">

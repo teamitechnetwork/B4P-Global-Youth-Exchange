@@ -40,6 +40,8 @@ The site introduces GYEV, explains its vision and program structure, describes i
 ## User preferences
 
 - Build a multi-page website with a clean user interface and experience.
+- Use white as the primary surface; avoid washed-out background colors and keep brand accents high-contrast.
+- Give each page a modern hero section.
 - Keep the project ready for Git, Vercel, and VS Code.
 
 ## Gotchas
